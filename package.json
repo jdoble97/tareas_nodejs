@@ -1,0 +1,19 @@
+{
+  "name": "tareas_nodejs",
+  "version": "1.0.0",
+  "description": "Sencilla aplicacion de tareas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdoble97/tareas_nodejs.git"
+  },
+  "author": "Jorge",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdoble97/tareas_nodejs/issues"
+  },
+  "homepage": "https://github.com/jdoble97/tareas_nodejs#readme"
+}
