@@ -1,14 +1,19 @@
-exports.inicioController = (req, res) => {
+const Proyectos = require('../models/Proyectos');
+
+exports.inicioController = async (req, res) => {
+    const proyectos = await Proyectos.findAll();
+
     res.render("index", {
-        nombrePagina: 'Cartas de Vocabulario'
+        nombrePagina: 'Proyectos',
+        proyectos
     });
 }
-exports.nuevaBarajaController = (req, res) => {
-    res.render("nuevaBaraja", {
-        nombrePagina: 'Nueva Baraja'
+exports.nuevoProyectoController = (req, res) => {
+    res.render("nuevoProyecto", {
+        nombrePagina: 'Nuevo Proyecto'
     });
 }
-exports.addBarajaController = (req, res) => {
+exports.addProyectoController = async (req, res) => {
 
     //Validamos que el input no esté vacio
     const { nombre } = req.body
@@ -17,16 +22,20 @@ exports.addBarajaController = (req, res) => {
         errores.push({ 'texto': 'Agrega un nombre' })
     }
     if (errores.length > 0) {
-        res.render('nuevaBaraja', {
+        res.render('nuevoProyecto', {
             nombrePagina: 'Nuevo Proyecto',
             errores
         })
-    }else{
-        
+    } else {
+        //Al no haber errores, insertamos en la BBDD
+        const proyecto = await Proyectos.create({ nombre});
+        res.redirect('/');
     }
 }
 
-
+exports.proyectoUrlController = (req,res)=>{
+    res.send("Listo--->"+req.params.url)
+}
 
 exports.autorController = (req, res) => {
     res.render("autor")
